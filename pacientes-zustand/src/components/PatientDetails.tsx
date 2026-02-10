@@ -9,6 +9,7 @@ type PatientDetailsProps = {
 export default function PatientDetails({patient} : PatientDetailsProps) {
 
   const deletePatient = usePatientStore((state) => state.deletePatient);
+  const getPatientById = usePatientStore((state) => state.getPatientById);
 
   return (
     <div className="mx-5 my-10 px-5 py-10 bg-white shadow-md rounded-xl">
@@ -21,6 +22,7 @@ export default function PatientDetails({patient} : PatientDetailsProps) {
 
         <div className="flex justify-between mt-10">
             <button 
+              onClick={() => getPatientById(patient.id)}
               type="button"
               className="bg-indigo-600 text-white px-10 py-2 hover:bg-indigo-700 font-bold uppercase rounded-md hover:cursor-pointer">
                   Editar

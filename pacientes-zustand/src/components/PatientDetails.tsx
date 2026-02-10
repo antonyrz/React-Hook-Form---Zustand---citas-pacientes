@@ -20,7 +20,7 @@ export default function PatientDetails({patient} : PatientDetailsProps) {
         <PatientDetailItem label="Fecha"data={patient.date.toString()} />
         <PatientDetailItem label="Sintomas"data={patient.symptoms} />
 
-        <div className="flex justify-between mt-10">
+        <div className="flex flex-col lg:flex-row gap-3 justify-between mt-10">
             <button 
               onClick={() => getPatientById(patient.id)}
               type="button"

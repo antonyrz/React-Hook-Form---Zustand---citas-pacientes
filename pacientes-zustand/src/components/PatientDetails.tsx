@@ -1,6 +1,7 @@
 import type { Patient } from "../types"
 import PatientDetailItem from "./PatientDetailItem"
 import  {usePatientStore} from "../store"
+import { toast } from "react-toastify";
 
 type PatientDetailsProps = {
     patient: Patient
@@ -10,6 +11,11 @@ export default function PatientDetails({patient} : PatientDetailsProps) {
 
   const deletePatient = usePatientStore((state) => state.deletePatient);
   const getPatientById = usePatientStore((state) => state.getPatientById);
+
+  const handleClick = () => {
+    deletePatient(patient.id);
+    toast.error('Paciente Eliminado Correctamente');
+  }
 
   return (
     <div className="mx-5 my-10 px-5 py-10 bg-white shadow-md rounded-xl">
@@ -29,7 +35,7 @@ export default function PatientDetails({patient} : PatientDetailsProps) {
             </button>
 
             <button 
-              onClick={() => deletePatient(patient.id)}
+              onClick={handleClick}
               type="button"
               className="bg-red-600 text-white px-10 py-2 hover:bg-red-700 font-bold uppercase rounded-md hover:cursor-pointer">
                   Eliminar
